@@ -1,18 +1,24 @@
+```css
+/* =========================
+   THE BECOMING ARCHIVE
+   Main Stylesheet
+   ========================= */
+
 :root {
-    --paper: #f3eee5;
-    --paper-deep: #e9dfd2;
-
-    --ink: #2c211b;
-    --brown: #5a3d2e;
-    --tobacco: #80604b;
-    --cinnamon: #95664d;
-
-    --line: #cbbcaf;
-    --muted: #756b63;
+    --paper: #f4f0e8;
+    --ink: #171614;
+    --muted: #77736b;
+    --line: #c9c3b8;
+    --accent: #8b8275;
 
     --serif: Georgia, "Times New Roman", serif;
     --sans: Arial, Helvetica, sans-serif;
 }
+
+
+/* =========================
+   RESET
+   ========================= */
 
 * {
     margin: 0;
@@ -39,12 +45,11 @@ a {
 
 /* =========================
    HEADER
-========================= */
+   ========================= */
 
 .site-header {
     width: 100%;
     padding: 28px 5vw;
-
     border-bottom: 1px solid var(--line);
 
     display: flex;
@@ -58,7 +63,6 @@ a {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.18em;
-    color: var(--brown);
 }
 
 nav {
@@ -71,22 +75,17 @@ nav a {
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--brown);
-
-    transition:
-        color 0.2s ease,
-        opacity 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 nav a:hover {
-    color: var(--cinnamon);
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 
 /* =========================
    HERO
-========================= */
+   ========================= */
 
 .hero {
     min-height: 78vh;
@@ -103,25 +102,21 @@ nav a:hover {
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-
-    color: var(--tobacco);
+    color: var(--muted);
 }
 
 .hero h1 {
-    max-width: 1000px;
+    max-width: 900px;
 
     font-family: var(--serif);
     font-size: clamp(65px, 12vw, 180px);
     font-weight: 400;
     line-height: 0.85;
     letter-spacing: -0.055em;
-
-    color: var(--ink);
 }
 
 .hero h1 em {
     font-style: italic;
-    color: var(--brown);
 }
 
 .hero-text {
@@ -130,14 +125,13 @@ nav a:hover {
 
     font-size: 14px;
     line-height: 1.8;
-
     color: var(--muted);
 }
 
 
 /* =========================
    SECTION LABELS
-========================= */
+   ========================= */
 
 .section-label {
     padding-bottom: 15px;
@@ -151,21 +145,17 @@ nav a:hover {
     font-size: 9px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-
-    color: var(--tobacco);
+    color: var(--muted);
 }
 
 
 /* =========================
    INTRO
-========================= */
+   ========================= */
 
 .intro {
     padding: 10vh 8vw;
-
     border-top: 1px solid var(--line);
-
-    background: var(--paper-deep);
 }
 
 .intro-content {
@@ -178,13 +168,10 @@ nav a:hover {
     font-weight: 400;
     line-height: 0.95;
     letter-spacing: -0.04em;
-
-    color: var(--ink);
 }
 
 .intro h2 em {
     font-style: italic;
-    color: var(--brown);
 }
 
 .intro p {
@@ -193,18 +180,16 @@ nav a:hover {
 
     font-size: 15px;
     line-height: 1.8;
-
     color: var(--muted);
 }
 
 
 /* =========================
    FEATURED
-========================= */
+   ========================= */
 
 .featured {
     padding: 10vh 8vw;
-
     border-top: 1px solid var(--line);
 }
 
@@ -218,18 +203,15 @@ nav a:hover {
 .feature-image {
     min-height: 600px;
 
-    background: var(--brown);
+    background: #ded8cd;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-family: var(--sans);
     font-size: 9px;
     letter-spacing: 0.2em;
-    text-transform: uppercase;
-
-    color: var(--paper);
+    color: var(--muted);
 }
 
 .feature-info {
@@ -242,8 +224,7 @@ nav a:hover {
     font-size: 9px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-
-    color: var(--cinnamon);
+    color: var(--muted);
 }
 
 .feature-info h2 {
@@ -252,8 +233,6 @@ nav a:hover {
     font-weight: 400;
     line-height: 0.98;
     letter-spacing: -0.035em;
-
-    color: var(--ink);
 }
 
 .feature-info > p:not(.category) {
@@ -261,7 +240,6 @@ nav a:hover {
 
     font-size: 14px;
     line-height: 1.8;
-
     color: var(--muted);
 }
 
@@ -272,8 +250,6 @@ nav a:hover {
     font-size: 10px;
     letter-spacing: 0.15em;
     font-weight: 700;
-
-    color: var(--brown);
 }
 
 .feature-info a:hover {
@@ -282,19 +258,17 @@ nav a:hover {
 
 
 /* =========================
-   EXPLORE
-========================= */
+   EXPLORE SECTIONS
+   ========================= */
 
 .sections {
     padding: 10vh 8vw;
-
     border-top: 1px solid var(--line);
 }
 
 .section-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
 }
@@ -309,8 +283,8 @@ nav a:hover {
     border-right: 1px solid var(--line);
 
     transition:
-        background 0.3s ease,
-        color 0.3s ease;
+        background 0.25s ease,
+        color 0.25s ease;
 }
 
 .section-card:last-child {
@@ -318,19 +292,14 @@ nav a:hover {
 }
 
 .section-card:hover {
-    background: var(--brown);
+    background: var(--ink);
     color: var(--paper);
 }
 
 .section-card > span {
     font-size: 9px;
     letter-spacing: 0.15em;
-
-    color: var(--tobacco);
-}
-
-.section-card:hover > span {
-    color: var(--paper-deep);
+    color: var(--muted);
 }
 
 .section-card h3 {
@@ -340,12 +309,6 @@ nav a:hover {
     font-size: clamp(35px, 4vw, 60px);
     font-weight: 400;
     line-height: 1;
-
-    color: var(--ink);
-}
-
-.section-card:hover h3 {
-    color: var(--paper);
 }
 
 .section-card p {
@@ -366,7 +329,7 @@ nav a:hover {
 
 /* =========================
    FOOTER
-========================= */
+   ========================= */
 
 footer {
     padding: 10vh 8vw 5vh;
@@ -376,9 +339,6 @@ footer {
     align-items: flex-end;
 
     border-top: 1px solid var(--line);
-
-    background: var(--brown);
-    color: var(--paper);
 }
 
 .footer-logo {
@@ -395,14 +355,13 @@ footer {
     line-height: 2;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-
-    color: var(--paper-deep);
+    color: var(--muted);
 }
 
 
 /* =========================
    MOBILE
-========================= */
+   ========================= */
 
 @media (max-width: 800px) {
 
@@ -439,7 +398,6 @@ footer {
 
     .section-card {
         min-height: 300px;
-
         border-right: none;
         border-bottom: 1px solid var(--line);
     }
@@ -456,8 +414,6 @@ footer {
 
     .footer-text {
         text-align: left;
-    }
-}
     }
 }
 ```
