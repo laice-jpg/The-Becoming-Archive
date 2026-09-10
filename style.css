@@ -1,24 +1,24 @@
-```css
-/* =========================
-   THE BECOMING ARCHIVE
-   Main Stylesheet
-   ========================= */
-
 :root {
-    --paper: #f4f0e8;
-    --ink: #171614;
-    --muted: #77736b;
-    --line: #c9c3b8;
-    --accent: #8b8275;
+    --paper: #f3eee5;
+    --paper-deep: #e7dccf;
+
+    --ink: #241a15;
+    --brown: #50372a;
+    --brown-dark: #34231b;
+    --tobacco: #80604b;
+    --cinnamon: #9a674d;
+
+    --line: #c9b9aa;
+    --muted: #746a62;
 
     --serif: Georgia, "Times New Roman", serif;
     --sans: Arial, Helvetica, sans-serif;
 }
 
 
-/* =========================
+/* ------------------------------
    RESET
-   ========================= */
+------------------------------ */
 
 * {
     margin: 0;
@@ -43,26 +43,31 @@ a {
 }
 
 
-/* =========================
+/* ------------------------------
    HEADER
-   ========================= */
+------------------------------ */
 
 .site-header {
     width: 100%;
-    padding: 28px 5vw;
+    padding: 26px 5vw;
     border-bottom: 1px solid var(--line);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 30px;
+
+    position: relative;
+    z-index: 10;
 }
 
 .logo {
     font-family: var(--sans);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
+    color: var(--brown);
 }
 
 nav {
@@ -72,70 +77,135 @@ nav {
 }
 
 nav a {
-    font-size: 11px;
-    letter-spacing: 0.08em;
+    position: relative;
+
+    font-size: 10px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: opacity 0.2s ease;
+
+    color: var(--brown);
+
+    transition:
+        color 0.25s ease,
+        opacity 0.25s ease;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--cinnamon);
+
+    transition: width 0.25s ease;
 }
 
 nav a:hover {
-    opacity: 0.5;
+    color: var(--cinnamon);
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 
-/* =========================
+/* ------------------------------
    HERO
-   ========================= */
+------------------------------ */
 
 .hero {
-    min-height: 78vh;
-    padding: 12vh 8vw 10vh;
+    min-height: 88vh;
+
+    padding: 10vh 8vw;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* giant decorative number */
+
+.hero::after {
+    content: "01";
+
+    position: absolute;
+    right: 6vw;
+    bottom: 5vh;
+
+    font-family: var(--serif);
+    font-size: clamp(100px, 18vw, 260px);
+    line-height: 1;
+
+    color: var(--paper-deep);
+
+    z-index: 0;
 }
 
 .eyebrow {
+    position: relative;
+    z-index: 1;
+
     margin-bottom: 35px;
 
-    font-size: 10px;
-    letter-spacing: 0.2em;
+    font-size: 9px;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--muted);
+
+    color: var(--tobacco);
 }
 
 .hero h1 {
-    max-width: 900px;
+    position: relative;
+    z-index: 1;
+
+    max-width: 1100px;
 
     font-family: var(--serif);
-    font-size: clamp(65px, 12vw, 180px);
+    font-size: clamp(65px, 13vw, 190px);
     font-weight: 400;
-    line-height: 0.85;
-    letter-spacing: -0.055em;
+
+    line-height: 0.82;
+    letter-spacing: -0.065em;
+
+    color: var(--ink);
 }
 
 .hero h1 em {
     font-style: italic;
+    color: var(--brown);
 }
 
 .hero-text {
+    position: relative;
+    z-index: 1;
+
     max-width: 430px;
-    margin-top: 55px;
+
+    margin-top: 60px;
 
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.85;
+
     color: var(--muted);
 }
 
 
-/* =========================
+/* ------------------------------
    SECTION LABELS
-   ========================= */
+------------------------------ */
 
 .section-label {
     padding-bottom: 15px;
-    margin-bottom: 45px;
+    margin-bottom: 55px;
 
     border-bottom: 1px solid var(--line);
 
@@ -143,180 +213,299 @@ nav a:hover {
     justify-content: space-between;
 
     font-size: 9px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--muted);
+
+    color: var(--tobacco);
 }
 
 
-/* =========================
+/* ------------------------------
    INTRO
-   ========================= */
+------------------------------ */
 
 .intro {
-    padding: 10vh 8vw;
+    padding: 12vh 8vw;
+
     border-top: 1px solid var(--line);
+
+    background: var(--paper-deep);
 }
 
 .intro-content {
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 .intro h2 {
     font-family: var(--serif);
-    font-size: clamp(45px, 7vw, 95px);
+    font-size: clamp(48px, 8vw, 110px);
+
     font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
+    line-height: 0.9;
+
+    letter-spacing: -0.05em;
+
+    color: var(--ink);
 }
 
 .intro h2 em {
     font-style: italic;
+    color: var(--brown);
 }
 
 .intro p {
     max-width: 500px;
-    margin-top: 45px;
+
+    margin-top: 50px;
 
     font-size: 15px;
-    line-height: 1.8;
+    line-height: 1.9;
+
     color: var(--muted);
 }
 
 
-/* =========================
+/* ------------------------------
    FEATURED
-   ========================= */
+------------------------------ */
 
 .featured {
-    padding: 10vh 8vw;
+    padding: 12vh 8vw;
+
     border-top: 1px solid var(--line);
+
+    background: var(--paper);
 }
 
 .feature-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns: 1.05fr 0.95fr;
+
     gap: 7vw;
+
     align-items: center;
 }
 
-.feature-image {
-    min-height: 600px;
 
-    background: #ded8cd;
+/* dramatic image block */
+
+.feature-image {
+    min-height: 650px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--brown-dark),
+            var(--brown)
+        );
 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    padding: 30px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.feature-image::before {
+    content: "THE BECOMING ARCHIVE";
+
+    position: absolute;
+
+    top: 30px;
+    left: 30px;
+
+    font-size: 8px;
+    letter-spacing: 0.2em;
+
+    color: var(--paper-deep);
+}
+
+.feature-image::after {
+    content: "2026";
+
+    position: absolute;
+
+    right: 30px;
+    bottom: 25px;
+
+    font-family: var(--serif);
+    font-size: 80px;
+
+    color: rgba(243, 238, 229, 0.12);
+}
+
+.feature-image span {
+    position: relative;
+    z-index: 1;
+
+    font-family: var(--sans);
 
     font-size: 9px;
     letter-spacing: 0.2em;
-    color: var(--muted);
+    text-transform: uppercase;
+
+    color: var(--paper);
 }
 
+
+/* feature text */
+
 .feature-info {
-    max-width: 550px;
+    max-width: 560px;
 }
 
 .category {
     margin-bottom: 25px;
 
     font-size: 9px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--muted);
+
+    color: var(--cinnamon);
 }
 
 .feature-info h2 {
     font-family: var(--serif);
-    font-size: clamp(38px, 5vw, 70px);
+
+    font-size: clamp(40px, 5.2vw, 76px);
+
     font-weight: 400;
-    line-height: 0.98;
-    letter-spacing: -0.035em;
+
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+
+    color: var(--ink);
 }
 
 .feature-info > p:not(.category) {
-    margin-top: 35px;
+    margin-top: 38px;
 
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.85;
+
     color: var(--muted);
 }
 
 .feature-info a {
     display: inline-block;
-    margin-top: 35px;
 
-    font-size: 10px;
-    letter-spacing: 0.15em;
+    margin-top: 38px;
+
+    padding-bottom: 6px;
+
+    border-bottom: 1px solid var(--brown);
+
+    font-size: 9px;
+    letter-spacing: 0.18em;
     font-weight: 700;
+
+    color: var(--brown);
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .feature-info a:hover {
-    text-decoration: underline;
+    color: var(--cinnamon);
+    border-color: var(--cinnamon);
 }
 
 
-/* =========================
-   EXPLORE SECTIONS
-   ========================= */
+/* ------------------------------
+   EXPLORE
+------------------------------ */
 
 .sections {
-    padding: 10vh 8vw;
+    padding: 12vh 8vw;
+
     border-top: 1px solid var(--line);
+
+    background: var(--paper-deep);
 }
 
 .section-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
 }
 
 .section-card {
-    min-height: 390px;
-    padding: 30px;
+    min-height: 430px;
+
+    padding: 32px;
 
     display: flex;
     flex-direction: column;
 
     border-right: 1px solid var(--line);
 
+    position: relative;
+
     transition:
-        background 0.25s ease,
-        color 0.25s ease;
+        background 0.35s ease,
+        color 0.35s ease;
 }
 
 .section-card:last-child {
     border-right: none;
 }
 
-.section-card:hover {
-    background: var(--ink);
-    color: var(--paper);
-}
-
 .section-card > span {
     font-size: 9px;
     letter-spacing: 0.15em;
-    color: var(--muted);
+
+    color: var(--tobacco);
+
+    transition: color 0.35s ease;
+}
+
+.section-card:hover {
+    background: var(--brown);
+    color: var(--paper);
+}
+
+.section-card:hover > span {
+    color: var(--paper-deep);
 }
 
 .section-card h3 {
     margin-top: auto;
 
     font-family: var(--serif);
-    font-size: clamp(35px, 4vw, 60px);
+
+    font-size: clamp(38px, 4vw, 62px);
+
     font-weight: 400;
-    line-height: 1;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.04em;
+
+    color: var(--ink);
+
+    transition: color 0.35s ease;
+}
+
+.section-card:hover h3 {
+    color: var(--paper);
 }
 
 .section-card p {
     max-width: 300px;
+
     margin-top: 25px;
 
     font-size: 13px;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 .section-card strong {
@@ -324,44 +513,60 @@ nav a:hover {
 
     font-size: 9px;
     letter-spacing: 0.15em;
+
+    color: var(--brown);
+
+    transition: color 0.35s ease;
+}
+
+.section-card:hover strong {
+    color: var(--paper);
 }
 
 
-/* =========================
+/* ------------------------------
    FOOTER
-   ========================= */
+------------------------------ */
 
 footer {
-    padding: 10vh 8vw 5vh;
+    padding: 12vh 8vw 5vh;
 
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 
     border-top: 1px solid var(--line);
+
+    background: var(--brown-dark);
+    color: var(--paper);
 }
 
 .footer-logo {
     font-family: var(--serif);
-    font-size: clamp(45px, 7vw, 100px);
-    line-height: 0.8;
-    letter-spacing: -0.04em;
+
+    font-size: clamp(48px, 8vw, 115px);
+
+    line-height: 0.78;
+
+    letter-spacing: -0.055em;
 }
 
 .footer-text {
     text-align: right;
 
-    font-size: 10px;
-    line-height: 2;
-    letter-spacing: 0.08em;
+    font-size: 9px;
+    line-height: 2.2;
+
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--muted);
+
+    color: var(--paper-deep);
 }
 
 
-/* =========================
+/* ------------------------------
    MOBILE
-   ========================= */
+------------------------------ */
 
 @media (max-width: 800px) {
 
@@ -371,21 +576,30 @@ footer {
     }
 
     nav {
-        gap: 15px;
+        gap: 16px;
     }
 
     .hero {
-        min-height: 70vh;
+        min-height: 75vh;
+
         padding: 10vh 7vw;
     }
 
     .hero h1 {
-        font-size: clamp(60px, 18vw, 110px);
+        font-size: clamp(60px, 19vw, 115px);
+    }
+
+    .hero::after {
+        right: 4vw;
+        bottom: 3vh;
+
+        font-size: 120px;
     }
 
     .feature-card {
         grid-template-columns: 1fr;
-        gap: 50px;
+
+        gap: 55px;
     }
 
     .feature-image {
@@ -397,7 +611,8 @@ footer {
     }
 
     .section-card {
-        min-height: 300px;
+        min-height: 320px;
+
         border-right: none;
         border-bottom: 1px solid var(--line);
     }
@@ -409,11 +624,11 @@ footer {
     footer {
         flex-direction: column;
         align-items: flex-start;
-        gap: 50px;
+
+        gap: 55px;
     }
 
     .footer-text {
         text-align: left;
     }
 }
-```
