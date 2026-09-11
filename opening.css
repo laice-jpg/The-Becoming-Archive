@@ -1,1 +1,488 @@
+:root {
+    --paper: #f4efe7;
+    --paper-light: #faf7f1;
+    --paper-dark: #e4d8ca;
 
+    --ink: #241b16;
+    --brown: #684938;
+    --brown-dark: #3c2920;
+    --tobacco: #876c59;
+    --muted: #766960;
+
+    --line: #cbbcaf;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    overflow: hidden;
+}
+
+/* ------------------------------
+   OPENING SCREEN
+------------------------------ */
+
+.opening-screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* subtle paper atmosphere */
+
+.opening-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,0.55),
+            transparent 55%
+        );
+
+    pointer-events: none;
+}
+
+/* ------------------------------
+   EDITION LABEL
+------------------------------ */
+
+.edition {
+    position: absolute;
+    top: 32px;
+    left: 40px;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--brown);
+
+    z-index: 10;
+}
+
+.edition span {
+    margin: 0 7px;
+    color: var(--line);
+}
+
+/* ------------------------------
+   MAGAZINE SCENE
+------------------------------ */
+
+.magazine-scene {
+    position: relative;
+
+    width: min(70vw, 720px);
+    aspect-ratio: 0.72;
+
+    perspective: 1800px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2;
+}
+
+/* ------------------------------
+   MAGAZINE
+------------------------------ */
+
+.magazine {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 1.5s cubic-bezier(.2,.75,.2,1);
+}
+
+/* ------------------------------
+   COVER
+------------------------------ */
+
+.cover {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--paper-light),
+            var(--paper)
+        );
+
+    border: 1px solid var(--paper-dark);
+
+    box-shadow:
+        0 35px 70px rgba(52, 36, 27, 0.18),
+        0 8px 20px rgba(52, 36, 27, 0.10);
+
+    padding: 42px;
+
+    display: flex;
+    flex-direction: column;
+
+    transform-origin: left center;
+
+    backface-visibility: hidden;
+
+    transition:
+        transform 1.7s cubic-bezier(.2,.75,.2,1),
+        box-shadow 1.7s ease;
+
+    z-index: 5;
+}
+
+/* spine */
+
+.cover::after {
+    content: "";
+
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+
+    background: rgba(104, 73, 56, 0.16);
+}
+
+/* ------------------------------
+   COVER TYPOGRAPHY
+------------------------------ */
+
+.cover-top {
+    display: flex;
+    flex-direction: column;
+
+    font-family: Arial, sans-serif;
+    font-size: clamp(10px, 1vw, 13px);
+
+    letter-spacing: 0.28em;
+    line-height: 1.8;
+
+    color: var(--brown);
+}
+
+.cover-title {
+    margin-top: 8px;
+
+    font-size: clamp(70px, 11vw, 125px);
+    line-height: 0.82;
+
+    letter-spacing: -0.07em;
+
+    color: var(--ink);
+
+    font-style: italic;
+}
+
+.cover-rule {
+    width: 100%;
+    height: 1px;
+
+    margin: 28px 0;
+
+    background: var(--line);
+}
+
+.cover-tagline {
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(9px, 1vw, 12px);
+    line-height: 1.6;
+
+    letter-spacing: 0.14em;
+
+    color: var(--brown);
+}
+
+.cover-bottom {
+    margin-top: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+
+    letter-spacing: 0.12em;
+
+    color: var(--muted);
+}
+
+/* ------------------------------
+   INSIDE PAGES
+------------------------------ */
+
+.inside {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+
+    background: var(--paper-light);
+
+    box-shadow:
+        0 35px 70px rgba(52, 36, 27, 0.14);
+
+    overflow: hidden;
+}
+
+.page {
+    position: relative;
+
+    width: 50%;
+    height: 100%;
+
+    padding: 48px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(104, 73, 56, 0.035),
+            transparent 12%
+        );
+}
+
+.left-page {
+    border-right: 1px solid var(--line);
+}
+
+.page-number {
+    position: absolute;
+
+    top: 30px;
+    right: 32px;
+
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+
+    color: var(--muted);
+}
+
+.page-content {
+    position: absolute;
+
+    left: 48px;
+    right: 48px;
+    bottom: 70px;
+}
+
+.small-label {
+    display: block;
+
+    margin-bottom: 25px;
+
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+
+    letter-spacing: 0.18em;
+
+    color: var(--brown);
+}
+
+.page h1 {
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 0.9;
+
+    letter-spacing: -0.045em;
+
+    font-weight: normal;
+}
+
+.page h2 {
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 0.92;
+
+    letter-spacing: -0.045em;
+
+    font-weight: normal;
+}
+
+.page p {
+    max-width: 270px;
+
+    margin-top: 28px;
+
+    font-size: 14px;
+    line-height: 1.75;
+
+    color: var(--muted);
+}
+
+.page-signature {
+    margin-top: 35px;
+
+    font-style: italic;
+
+    color: var(--brown);
+    font-size: 14px;
+}
+
+/* ------------------------------
+   ENTER SECTION
+------------------------------ */
+
+.enter-section {
+    position: absolute;
+
+    bottom: 38px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 13px;
+
+    z-index: 10;
+}
+
+.enter-section p {
+    font-style: italic;
+
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+#enterButton {
+    appearance: none;
+    border: none;
+    background: transparent;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+    letter-spacing: 0.2em;
+
+    color: var(--brown);
+
+    cursor: pointer;
+
+    padding: 8px 4px;
+
+    transition:
+        letter-spacing 0.3s ease,
+        color 0.3s ease;
+}
+
+#enterButton span {
+    display: inline-block;
+
+    margin-left: 8px;
+
+    transition: transform 0.3s ease;
+}
+
+#enterButton:hover {
+    letter-spacing: 0.26em;
+    color: var(--brown-dark);
+}
+
+#enterButton:hover span {
+    transform: translateX(5px);
+}
+
+/* ------------------------------
+   OPENING ANIMATION
+------------------------------ */
+
+.magazine.opening {
+    transform: translateX(25%) scale(1.02);
+}
+
+.magazine.opening .cover {
+    transform: rotateY(-180deg);
+    box-shadow: none;
+}
+
+.magazine.opening .inside {
+    box-shadow:
+        0 45px 100px rgba(52, 36, 27, 0.20);
+}
+
+/* ------------------------------
+   MOBILE
+------------------------------ */
+
+@media (max-width: 700px) {
+
+    .opening-screen {
+        min-height: 560px;
+    }
+
+    .edition {
+        top: 22px;
+        left: 22px;
+    }
+
+    .magazine-scene {
+        width: 78vw;
+    }
+
+    .cover {
+        padding: 28px;
+    }
+
+    .inside {
+        display: none;
+    }
+
+    .magazine.opening {
+        transform: scale(1.03);
+    }
+
+    .cover-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .enter-section {
+        bottom: 25px;
+    }
+}
+
+@media (max-height: 700px) {
+
+    .magazine-scene {
+        height: 62vh;
+        width: auto;
+    }
+
+    .enter-section {
+        bottom: 18px;
+    }
+}
